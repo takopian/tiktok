@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Отображение геометок {% endblock %}</h1>
+{% endblock %}
+
+{% block map_script %}
+<script type="text/javascript">
+ymaps.ready(init);
+
+function init () {
+    var myMap = new ymaps.Map("map", {
+            center: [54.83, 37.11],
+            zoom: 5
+        }, {
+            searchControlProvider: 'yandex#search'
+        }),
+
+        {% for point in points %}
+        myPlacemark = new ymaps.Placemark([{{ point['xcoord'] }}, {{ point['ycoord'] }}], {
+            // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
+            balloonContentHeader: {{ point['header']|tojson }},
+            balloonContentBody: {{ point['body']|tojson }}
+        });
+
+    myMap.geoObjects.add(myPlacemark);
+        {% endfor %}
+}
+</script>
+{% endblock %}

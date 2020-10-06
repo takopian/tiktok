@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Create a New Point {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="header">Голова метки</label>
+        <input type="text" name="header"
+               placeholder="" class="form-control"
+               value="{{ request.form['header'] }}"/>
+    </div>
+    <div class="form-group">
+        <label for="xcoord">Широта</label>
+        <input type="float" name="xcoord"
+               placeholder="" class="form-control"
+               value="{{ request.form['xcoord'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="ycoord">Долгота</label>
+        <input type="float" name="ycoord"
+               placeholder="" class="form-control"
+               value="{{ request.form['ycoord'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="body">Тело метки</label>
+        <<input type="text" name="body"
+               placeholder="" class="form-control"
+               value="{{ request.form['body'] }}"/>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}

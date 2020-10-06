@@ -18,7 +18,7 @@ function init () {
 
         {% for point in points %}
         myPlacemark = new ymaps.Placemark([{{ point['xcoord'] }}, {{ point['ycoord'] }}], {
-            // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
+
             balloonContentHeader: {{ point['header']|tojson }},
             balloonContentBody: {{ point['body']|tojson }}
         });
